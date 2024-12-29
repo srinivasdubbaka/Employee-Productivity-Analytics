@@ -33,32 +33,33 @@ This project analyzes employee productivity in a simulated organizational setup 
 - **Employee_ID**: Foreign key referencing `Employees`.
 - **Details**: Month, Tasks_Completed, and Errors.
 
+
 ## 🔍 Key Insights
-1: **Average Work Hours by Department:**
-  ```sql
-  SELECT e.Department, AVG(wh.Hours_Worked) AS Avg_Hours
+1. **Average Work Hours by Department:**
+   ```sql
+   SELECT e.Department, AVG(wh.Hours_Worked) AS Avg_Hours
   FROM Employees e
   JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
   GROUP BY e.Department;
 
-2: **Top_Performers:**
-  ```sql
-  SELECT e.Name, pm.Tasks_Completed
+2. **Top_Performers:**
+   ```sql
+   SELECT e.Name, pm.Tasks_Completed
   FROM Employees e
   JOIN Productivity_Metrics pm ON e.Employee_ID = pm.Employee_ID
   WHERE pm.Tasks_Completed = (SELECT MAX(Tasks_Completed) FROM Productivity_Metrics);
 
 3. **Project Completion Rates by Department:**
-```sql
-SELECT e.Department, COUNT(p.Project_ID) AS Total_Projects,
+   ```sql
+   SELECT e.Department, COUNT(p.Project_ID) AS Total_Projects,
        SUM(CASE WHEN p.Status = 'Completed' THEN 1 ELSE 0 END) AS Completed_Projects
 FROM Employees e
 JOIN Projects p ON e.Employee_ID = p.Employee_ID
 GROUP BY e.Department;
 
 4. **Productivity Trends (Tasks vs Errors):**
-```sql
-SELECT pm.Month, e.Department, SUM(pm.Tasks_Completed) AS Total_Tasks, SUM(pm.Errors) AS Total_Errors
+   ```sql
+   SELECT pm.Month, e.Department, SUM(pm.Tasks_Completed) AS Total_Tasks, SUM(pm.Errors) AS Total_Errors
 FROM Productivity_Metrics pm
 JOIN Employees e ON pm.Employee_ID = e.Employee_ID
 GROUP BY pm.Month, e.Department;
