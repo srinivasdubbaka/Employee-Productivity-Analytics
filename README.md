@@ -41,7 +41,7 @@ FROM Employees e
 JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
 GROUP BY e.Department;
 
-2: **Top Performers:**
+2: **Top_Performers:**
 ```sql
 SELECT e.Name, pm.Tasks_Completed
 FROM Employees e
@@ -56,3 +56,24 @@ FROM Employees e
 JOIN Projects p ON e.Employee_ID = p.Employee_ID
 GROUP BY e.Department;
 
+4. **Productivity Trends (Tasks vs Errors):**
+```sql
+SELECT pm.Month, e.Department, SUM(pm.Tasks_Completed) AS Total_Tasks, SUM(pm.Errors) AS Total_Errors
+FROM Productivity_Metrics pm
+JOIN Employees e ON pm.Employee_ID = e.Employee_ID
+GROUP BY pm.Month, e.Department;
+
+## 🏗️ Getting Started
+- **Set up the database:**
+  - Execute the CREATE TABLE and INSERT scripts.
+  - Populate the tables with sample data.
+
+- **Run SQL queries:**
+  - Use the provided queries for analysis.
+
+- **Customize:**
+  - Modify the schema or queries for specific organizational contexts.
+
+## 🌐 Link
+- **GitHub Repository:**
+  - 
