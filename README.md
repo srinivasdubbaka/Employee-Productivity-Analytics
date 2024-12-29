@@ -35,18 +35,18 @@ This project analyzes employee productivity in a simulated organizational setup 
 
 ## 🔍 Key Insights
 1: **Average Work Hours by Department:**
-```sql
-SELECT e.Department, AVG(wh.Hours_Worked) AS Avg_Hours
-FROM Employees e
-JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
-GROUP BY e.Department;
+  ```sql
+  SELECT e.Department, AVG(wh.Hours_Worked) AS Avg_Hours
+  FROM Employees e
+  JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
+  GROUP BY e.Department;
 
 2: **Top_Performers:**
-```sql
-SELECT e.Name, pm.Tasks_Completed
-FROM Employees e
-JOIN Productivity_Metrics pm ON e.Employee_ID = pm.Employee_ID
-WHERE pm.Tasks_Completed = (SELECT MAX(Tasks_Completed) FROM Productivity_Metrics);
+  ```sql
+  SELECT e.Name, pm.Tasks_Completed
+  FROM Employees e
+  JOIN Productivity_Metrics pm ON e.Employee_ID = pm.Employee_ID
+  WHERE pm.Tasks_Completed = (SELECT MAX(Tasks_Completed) FROM Productivity_Metrics);
 
 3. **Project Completion Rates by Department:**
 ```sql
@@ -76,4 +76,4 @@ GROUP BY pm.Month, e.Department;
 
 ## 🌐 Link
 - **GitHub Repository:**
-  - 
+  - https://github.com/srinivasdubbaka/Employee-Productivity-Analytics
