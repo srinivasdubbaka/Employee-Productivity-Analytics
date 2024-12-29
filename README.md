@@ -38,9 +38,9 @@ This project analyzes employee productivity in a simulated organizational setup 
 1. **Average Work Hours by Department:**
    ```sql
    SELECT e.Department, AVG(wh.Hours_Worked) AS Avg_Hours
-  FROM Employees e
-  JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
-  GROUP BY e.Department;
+   FROM Employees e
+   JOIN Work_Hours wh ON e.Employee_ID = wh.Employee_ID
+   GROUP BY e.Department;
 
 2. **Top_Performers:**
    ```sql
